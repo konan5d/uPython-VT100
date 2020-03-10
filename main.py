@@ -2,11 +2,13 @@
 
 from pyb import UART
 
-numero_uart = 2
+def uart_init(num_uart):
+    uart = UART(num_uart)
+    uart.init(9600, 8, None, 1)
 
-uart = UART(numero_uart)
+# Initialisation de la liaison série 
+uart_init(2)
 
-uart.init(9600, 8, None, 1)
 
 while(1):
     uart.write(b"0x00")
