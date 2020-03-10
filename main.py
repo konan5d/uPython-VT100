@@ -3,12 +3,13 @@
 from pyb import UART
 
 def uart_init(num_uart):
-    uart = UART(num_uart)
-    uart.init(9600, 8, None, 1)
+    uart_port = UART(num_uart)
+    uart_port.init(9600, 8, None, 1)
+
+    return uart_port
 
 # Initialisation de la liaison série 
-uart_init(2)
-
+uart = uart_init(2)
 
 while(1):
     uart.write(b"0x00")
